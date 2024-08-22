@@ -1,0 +1,29 @@
+<!-- user_app/register.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Register</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    <div class="form-help">{{ field.help_text }}</div>
+                    <div class="form-error">{{ field.errors }}</div>
+                </div>
+            {% endfor %}
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>
+
